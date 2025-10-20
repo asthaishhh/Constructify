@@ -48,49 +48,56 @@
 
 // export default App
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import AppSidebar from "./components/layouts/sidebar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Bill from "./components/pages/Bill";
 import Orders from "./components/pages/Orders";
+import Inventory from "./components/pages/Inventory";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -30 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bill" element={<Bill />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/inventory" element={<Inventory />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
-  const [currentPage, setCurrentPage] = useState("dashboard");
-
-  // ✅ this is the main navigation handler
-  const onPageChange = (pageId) => {
-    console.log("Navigating to:", pageId);
-    setCurrentPage(pageId);
-  };
 
   return (
-    <div className="flex min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
-      {/* Sidebar */}
-      <AppSidebar
-        collapsed={collapsed}
-        onToggle={() => setCollapsed(!collapsed)}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+    <Router>
+      <div className="flex min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+        {/* Sidebar */}
+        <AppSidebar
+          collapsed={collapsed}
+          onToggle={() => setCollapsed(!collapsed)}
+        />
 
-      {/* Page Content with Smooth Transition */}
-      <div className="flex-1 p-6 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            {currentPage === "dashboard" && <Dashboard />}
-            {currentPage === "bill" && <Bill />}
-            {currentPage === "orders" && <Orders />}
-          </motion.div>
-        </AnimatePresence>
+        {/* Page Content with Smooth Transition */}
+        <div className="flex-1 p-6 overflow-hidden">
+          <AnimatedRoutes />
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

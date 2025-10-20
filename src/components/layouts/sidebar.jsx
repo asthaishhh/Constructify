@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronDown, ToolCase } from "lucide-react";
-// import { ToolBox } from "lucide-react";
-import { HardHat } from "lucide-react";
 import Logo from "./Logo";
 import menuItems from './sideBarMenu';
 
-function AppSidebar({collapsed,onToggle, currentPage, onPageChange}) {
+function AppSidebar({collapsed, onToggle}) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = location.pathname.substring(1) || "dashboard";
   const [expandedItems, setExpandedItems] =useState(new Set(["analytics"]));
 
     const toggleExpanded = (itemId) =>{
@@ -57,7 +59,7 @@ function AppSidebar({collapsed,onToggle, currentPage, onPageChange}) {
                 if(item.subMenu){
                   toggleExpanded(item.id);
                 }else{
-                  onPageChange(item.id);
+                  navigate('/' + item.id);
                 }
               }}
               >
@@ -100,7 +102,7 @@ function AppSidebar({collapsed,onToggle, currentPage, onPageChange}) {
                 return (
                   <button
                     key={subitem.id}
-                    onClick={() => onPageChange(subitem.id)}
+                    onClick={() => navigate('/' + subitem.id)}
                     className={`w-full text-left p-2 text-sm rounded-lg transition-all ${isActiveSub ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50'}`}
                   >
                     {subitem.label}
