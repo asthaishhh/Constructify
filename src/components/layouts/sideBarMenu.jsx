@@ -48,7 +48,7 @@ const menuItems=[
     count:"99",
   },
   {
-    id:"Orders",
+    id:"orders",
     icon: BaggageClaim,
     label: "Orders",
     count:"99",
