@@ -1,4 +1,4 @@
-import { BarChart3, Calendar, CreditCard, FileText, LayoutDashboard, MessageSquare, Package, Settings, ShoppingBag, Users } from "lucide-react";
+import { BaggageClaim, BarChart3, Calendar, CreditCard, FileText, IdCardLanyard, LayoutDashboard, LucideListOrdered, MapPinned, MessageSquare, Package, Settings, ShoppingBag, Truck, Users } from "lucide-react";
 
 const menuItems=[
   {
@@ -14,29 +14,29 @@ const menuItems=[
     label: "Analytics",
     subMenu:[
       {id: "overview",label:"Overview"},
-      {id:"reports",label:"Reports"},
-      {id: "insights", label:"Insights"},
+      // {id:"reports",label:"Reports"},
+      // {id: "insights", label:"Insights"},
     ],
   },
+  // {
+  //   id:"users",
+  //   icon:Users,
+  //   label:"Users",
+  //   count: " 5 ",
+  //   subMenu:[
+  //     {id:"all users",label:"All users"},
+  //     {id:"roles",label:"Roles and Permissions"},
+  //     {id:"activity", label:"User Activity"}
+  //   ],
+  // },
   {
-    id:"users",
-    icon:Users,
-    label:"Users",
-    count: " 5 ",
-    subMenu:[
-      {id:"all users",label:"All users"},
-      {id:"roles",label:"Roles and Permissions"},
-      {id:"activity", label:"User Activity"}
-    ],
-  },
-  {
-    id:"ecommerce",
+    id:"Billing",
     icon: ShoppingBag,
-    label:"E-commerce",
+    label:"Billing",
     subMenu: [
-      {id:"products", label: "Products"},
-      {id:"orders", label:"Orders"},
-      {id:"customers", label:"Customers"},
+      // {id:"products", label: "Products"},
+      // {id:"orders", label:"Orders"},
+      // {id:"customers", label:"Customers"},
       {id:"bill", label:"Generate New Bill"},
     ],
 
@@ -48,26 +48,43 @@ const menuItems=[
     count:"99",
   },
   {
-    id:"transaction",
-    icon:CreditCard,
-    label:"Transactions",
+    id:"Orders",
+    icon: BaggageClaim,
+    label: "Orders",
+    count:"99",
   },
   {
-    id:"messages",
-    icon:MessageSquare,
-    label:"Messages",
-    badge:"9"
+    id:"employees",
+    icon:IdCardLanyard,
+    label:"Employees",
+    count: " 5 ",
+    subMenu:[
+      {id:"all users",label:"All users"},
+      {id:"roles",label:"Roles and Permissions"},
+      {id:"activity", label:"User Activity"}
+    ],
   },
   {
-    id:" calender",
-    icon: Calendar,
-    label:"Calender",
+    id:"transporation",
+    icon:Truck,
+    label:"Transporation",
   },
-  {
-    id:"reports",
-    icon: FileText,
-    label:"Reports",
-  },
+  // {
+  //   id:"messages",
+  //   icon:MessageSquare,
+  //   label:"Messages",
+  //   badge:"9"
+  // },
+  // {
+  //   id:" calender",
+  //   icon: Calendar,
+  //   label:"Calender",
+  // },
+  // {
+  //   id:"reports",
+  //   icon: FileText,
+  //   label:"Reports",
+  // },
   {
     id:"settings",
     icon:Settings,

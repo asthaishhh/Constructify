@@ -1,6 +1,6 @@
 import React from 'react'
 import {Menu, Search, Filter, Plus, Sun, Bell, Settings, ChevronDown} from 'lucide-react'
-import Logo from './logo'
+// import Logo from './logo'
 
 const Header = ({sideBarCollapsed , onToggleSideBar}) => {
   return (

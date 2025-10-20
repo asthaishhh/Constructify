@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import AppSidebar from './components/layouts/sidebar'
-import Header from './components/layouts/header'
+import Header from './components/layouts/Header';
 import Dashboard from './components/dashboard/Dashboard';
 import Bill from './components/pages/Bill';
 
@@ -9,6 +9,14 @@ import Bill from './components/pages/Bill';
 function App() {
   const [sideBarCollapsed, setSideBarCollapsed]= useState(false);
   const [currentPage, setCurrentPage] = useState("dashboard");
+
+  // Optionally, you can define onPageChange to include side effects or logging
+  const onPageChange = (pageId) => {
+    setCurrentPage(pageId);
+    // Add more logic here if you want on page change (e.g., analytics)
+  };
+ 
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 
    dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500">

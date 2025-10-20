@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { ChevronDown, ToolCase } from "lucide-react";
 // import { ToolBox } from "lucide-react";
 import { HardHat } from "lucide-react";
-import Logo from "./logo";
+import Logo from "./Logo";
 import menuItems from './sideBarMenu';
 
 function AppSidebar({collapsed,onToggle, currentPage, onPageChange}) {
